@@ -105,14 +105,14 @@ class telekinesisePower(basePower):
             if obj["grabbed"]:
                 col = (255, 150, 255)
                 # Glow ring when grabbed
-                cv2.circle(frame, (x, y), sz + 12, (200, 50, 255), 2)
+                cv2.circle(frame, (x, y), sz + 12, (200, 50, 255), 2, cv2.LINE_AA)
 
             if obj["shape"] == "circle":
-                cv2.circle(frame, (x, y), sz, col, -1)
-                cv2.circle(frame, (x, y), sz, glow_col, 2)
+                cv2.circle(frame, (x, y), sz, col, -1, cv2.LINE_AA)
+                cv2.circle(frame, (x, y), sz, glow_col, 2, cv2.LINE_AA)
             elif obj["shape"] == "rect":
-                cv2.rectangle(frame, (x-sz, y-sz), (x+sz, y+sz), col, -1)
-                cv2.rectangle(frame, (x-sz, y-sz), (x+sz, y+sz), glow_col, 2)
+                cv2.rectangle(frame, (x-sz, y-sz), (x+sz, y+sz), col, -1, cv2.LINE_AA)
+                cv2.rectangle(frame, (x-sz, y-sz), (x+sz, y+sz), glow_col, 2, cv2.LINE_AA)
             elif obj["shape"] == "triangle":
                 pts = np.array([
                     [x, y - sz], [x - sz, y + sz], [x + sz, y + sz]
@@ -127,8 +127,8 @@ class telekinesisePower(basePower):
         overlay = frame.copy()
         t = time.time()
         r = int(60 + math.sin(t * 6) * 10)
-        cv2.circle(overlay, pos, r, (200, 50, 255), 2)
-        cv2.circle(overlay, pos, r // 2, (255, 150, 255), 1)
+        cv2.circle(overlay, pos, r, (200, 50, 255), 2, cv2.LINE_AA)
+        cv2.circle(overlay, pos, r // 2, (255, 150, 255), 1, cv2.LINE_AA)
         return cv2.addWeighted(frame, 0.65, overlay, 0.35, 0)
 
     def _force_push(self, frame: np.ndarray, pos: tuple) -> np.ndarray:

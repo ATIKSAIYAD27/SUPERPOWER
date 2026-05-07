@@ -66,9 +66,9 @@ class icePower(basePower):
             length = 30 + math.sin(t * 3 + i) * 10
             x2 = int(pos[0] + math.cos(angle) * length)
             y2 = int(pos[1] + math.sin(angle) * length)
-            cv2.line(overlay, pos, (x2, y2), (255, 240, 200), 2)
+            cv2.line(overlay, pos, (x2, y2), (255, 240, 200), 2, cv2.LINE_AA)
             # crystal tip
-            cv2.circle(overlay, (x2, y2), 4, (255, 255, 255), -1)
+            cv2.circle(overlay, (x2, y2), 4, (255, 255, 255), -1, cv2.LINE_AA)
         return cv2.addWeighted(frame, 0.6, overlay, 0.4, 0)
 
     def _freeze_burst(self, frame: np.ndarray, pos: tuple) -> np.ndarray:
@@ -78,5 +78,5 @@ class icePower(basePower):
                 angle = math.pi * 2 * i / 8
                 x = int(pos[0] + math.cos(angle) * r)
                 y = int(pos[1] + math.sin(angle) * r)
-                cv2.line(overlay, pos, (x, y), (255, 230, 150), 2)
+                cv2.line(overlay, pos, (x, y), (255, 230, 150), 2, cv2.LINE_AA)
         return cv2.addWeighted(frame, 0.5, overlay, 0.5, 0)

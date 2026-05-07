@@ -56,7 +56,7 @@ class lightningPower(basePower):
             r = 40 + math.sin(t * 5 + i) * 15
             x = int(pos[0] + math.cos(angle) * r)
             y = int(pos[1] + math.sin(angle) * r)
-            cv2.line(overlay, pos, (x, y), (0, 255, 255), 1)
+            cv2.line(overlay, pos, (x, y), (0, 255, 255), 1, cv2.LINE_AA)
         return cv2.addWeighted(frame, 0.6, overlay, 0.4, 0)
 
     def _chain_lightning(self, frame: np.ndarray, pos: tuple) -> np.ndarray:
@@ -87,4 +87,4 @@ class lightningPower(basePower):
         for i in range(len(pts) - 1):
             if (0 <= pts[i][0] < self.w and 0 <= pts[i][1] < self.h and
                     0 <= pts[i+1][0] < self.w and 0 <= pts[i+1][1] < self.h):
-                cv2.line(frame, pts[i], pts[i+1], color, width)
+                cv2.line(frame, pts[i], pts[i+1], color, width, cv2.LINE_AA)
