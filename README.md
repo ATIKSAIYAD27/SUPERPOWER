@@ -1,4 +1,4 @@
-# ⚡ SUPERHERO POWER SIMULATION v2.0 (GOD-TIER UPGRADE)
+# ⚡ SUPERHERO POWER SIMULATION 
 
 > *The ultimate real-time superhero experience. Control the fundamental forces of nature and technology with cinematic precision.*
 
@@ -82,3 +82,6 @@ superpower/
 ---
 
 *Engineered for performance. Designed for impact. Built for Heroes.* ⚡
+
+
+GIT - ATIKSAIYAD27
